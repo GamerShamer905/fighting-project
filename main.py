@@ -1,4 +1,4 @@
-from random import randint
+from random import randint, sample
 class Minion:
     def __init__(self, name, health, attack_power, armour):
         self.name = name
@@ -6,7 +6,7 @@ class Minion:
         self.attack_power = attack_power
         self.armour = armour
     def die(self):
-            return True
+            print(f"{self.name} has DIED.")
     def take_damage(self, amount):
         self.health = self.health - amount
         if self.health <= 0:
@@ -22,7 +22,8 @@ class Minion:
         print(f"You hit for {damage_amount}!")
 
 class Attack:
-    def __init__(self, attack_type, base_damage):
+    def __init__(self, name, attack_type, base_damage):
+         self.name = name
          self.attack_type = attack_type
          self.base_damage = base_damage
 
@@ -58,26 +59,26 @@ chainmail = Armour(
          "magic":1
     }
 )
-katana_rush = Attack("slash", 1.1)
-longsword_sweep = Attack("slash", 1.2)
-dual_blade_fury = Attack("slash", 1.3)
-whirlwind_cut = Attack("slash", 1.25)
-rending_arc = Attack("slash", 1.4)
-dagger_thrust = Attack("pierce", 1.0)
-longspear_throw = Attack("pierce", 1.3)
-needle_strike = Attack("pierce", 0.9)
-assassin_stab = Attack("pierce", 1.35)
-crossbow_puncture = Attack("pierce", 1.2)
-warhammer_smash = Attack("blunt", 1.5)
-shield_bash = Attack("blunt", 1.0)
-fist_of_iron = Attack("blunt", 1.1)
-ground_breaker = Attack("blunt", 1.45)
-club_crash = Attack("blunt", 1.2)
-fireball_burst = Attack("magic", 1.4)
-ice_spear = Attack("magic", 1.2)
-lightning_arc = Attack("magic", 1.6)
-arcane_explosion = Attack("magic", 1.7)
-shadow_bolt = Attack("magic", 1.3)
+katana_rush = Attack("Katana Rush", "slash", 1.1)
+longsword_sweep = Attack("Longsword Sweep", "slash", 1.2)
+dual_blade_fury = Attack("Dual Blade Fury", "slash", 1.3)
+whirlwind_cut = Attack("Whirlwind Cut", "slash", 1.25)
+rending_arc = Attack("Rending Arc", "slash", 1.4)
+dagger_thrust = Attack("Dagger Thrust", "pierce", 1.0)
+longspear_throw = Attack("Longspear Throw", "pierce", 1.3)
+needle_strike = Attack("Needle Strike","pierce", 0.9)
+assassin_stab = Attack("Assassin Stab", "pierce", 1.35)
+crossbow_puncture = Attack("Crossbow","pierce", 1.2)
+warhammer_smash = Attack("Warhammer Smash", "blunt", 1.5)
+shield_bash = Attack("Shield Bash", "blunt", 1.0)
+fist_of_iron = Attack("Fist of Iron", "blunt", 1.1)
+ground_breaker = Attack("Ground Breaker", "blunt", 1.45)
+club_crash = Attack("Club Crash", "blunt", 1.2)
+fireball_burst = Attack("Fireball Burst", "magic", 1.4)
+ice_spear = Attack("Ice Spear","magic", 1.2)
+lightning_arc = Attack("Lightning Arc", "magic", 1.6)
+arcane_explosion = Attack("Arcane Explosion", "magic", 1.7)
+shadow_bolt = Attack("Shadow Bolt", "magic", 1.3)
 
 #character creation
 player1_name = str(input("Input your characters name Player 1"))
@@ -89,7 +90,7 @@ elif player1_armour == "L":
 elif player1_armour == "P":
     player1_armour = plate
 else:
-    print("invalid armour, defaulting to leather, womp womp")
+    print("invalid armour, defaulting to leather")
     player1_armour = leather
 print(f"YOU HAVE 20 POINTS, {player1_name}. YOU CAN INVEST INTO HEALTH AND DAMAGE")
 player1_pointamount = 20
@@ -99,6 +100,10 @@ while True:
         print("Cannot invest negative points")
     elif player1_health_points > player1_pointamount:
         print(f"You don't have enough points. You currently have {player1_pointamount} points.")
+    elif player1_health_points == 0:
+        print("Health invested: 0")
+        print(f"Remaining points: {player1_pointamount}")
+        break
     else:
         player1_pointamount -= player1_health_points
         print(f"Health invested: {player1_health_points}")
@@ -132,13 +137,13 @@ player1 = Minion(
 
 
 
-player2_name = str(input("Input your characters name Player 2"))
+player2_name = str(input("Input your characters name Player 2: "))
 player2_armour = str(input("What armour type do you want. Leather (L), Plate (P), Chainmail (C): "))
-if player2_armour == "C":
+if player2_armour.max() == "C":
     player2_armour = chainmail
-elif player2_armour == "L":
+elif player2_armour.max() == "L":
     player2_armour = leather
-elif player2_armour == "P":
+elif player2_armour.max() == "P":
     player2_armour = plate
 else:
     print("invalid armour, defaulting to leather, womp womp")
@@ -183,43 +188,95 @@ player2 = Minion(
 )
 
 attacks = [
-    "Katana Rush",
-    "Longsword Sweep",
-    "Dual Blade Fury",
-    "Whirlwind Cut",
-    "Rending Arc",
+    katana_rush,
+    longsword_sweep,
+    dual_blade_fury,
+    whirlwind_cut,
+    rending_arc,
 
-    "Dagger Thrust",
-    "Longspear Throw",
-    "Needle Strike",
-    "Assassin Stab",
-    "Crossbow Puncture",
+    dagger_thrust,
+    longspear_throw,
+    needle_strike,
+    assassin_stab,
+    crossbow_puncture,
 
-    "Warhammer Smash",
-    "Shield Bash",
-    "Fist of Iron",
-    "Ground Breaker",
-    "Club Crash",
+    warhammer_smash,
+    shield_bash,
+    fist_of_iron,
+    ground_breaker,
+    club_crash,
 
-    "Fireball Burst",
-    "Ice Spear",
-    "Lightning Arc",
-    "Arcane Explosion",
-    "Shadow Bolt"
+    fireball_burst,
+    ice_spear,
+    lightning_arc,
+    arcane_explosion,
+    shadow_bolt
 ]
 def choose_attacks(attacks):
-    while True:
-        attack1 = randint(1, len(attacks))
-        attack2 = randint(1, len(attacks))
-        attack3 = randint(1, len(attacks))
-        if attack1 == attack2 or attack1 == attack3 or attack2 == attack1 or attack2 == attack3:
-            pass
-        else:
-            return [attack1, attack2, attack3]
+    random = sample(attacks, 3)
+    return random
+
+def check_winner(player1, player2):
+    if player1.health <= 0:
+        return player2.name
+    elif player2.health <= 0:
+        return player1.name
+    return None
         
 def play(player1, player2, attacks):
     print("PLAYER 1 STARTS")
     while True:
         player1_attacks = choose_attacks(attacks)
-        print(f"Your attack options are: \n 1. {player1_attacks[0]} \n 2. {player1_attacks[1]} \n 3. {player1_attacks[2]}")
+        print(f"Your attack options are: \n 1. {player1_attacks[0].name} \n 2. {player1_attacks[1].name} \n 3. {player1_attacks[2].name}")
+        player1_chosen_attack = int(input("Which attack do you choose?: "))
+        player1.attack(player2, player1_attacks[player1_chosen_attack-1])
+        print(f"HEALTH: {player1.health}")
+        winner = check_winner(player1, player2)
+        if winner:
+            break
 
+        player2_attacks = choose_attacks(attacks)
+        print(f"Your attack options are: \n 1. {player2_attacks[0].name} \n 2. {player2_attacks[1].name} \n 3. {player2_attacks[2].name}")
+        player2_chosen_attack = int(input("Which attack do you choose?: "))
+        player2.attack(player1, player2_attacks[player2_chosen_attack-1])
+        print(f"HEALTH: {player2.health}")
+        winner = check_winner(player1, player2)
+        if winner:
+            break
+    winner = check_winner(player1, player2)
+    print(f"{winner} Won!")
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+play(player1, player2, attacks)
