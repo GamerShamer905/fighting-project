@@ -81,7 +81,7 @@ arcane_explosion = Attack("Arcane Explosion", "magic", 1.7)
 shadow_bolt = Attack("Shadow Bolt", "magic", 1.3)
 
 #character creation
-player1_name = str(input("Input your characters name Player 1"))
+player1_name = str(input("Input your characters name Player 1: "))
 player1_armour = str(input("What armour type do you want. Leather (L), Plate (P), Chainmail (C): "))
 if player1_armour == "C":
     player1_armour = chainmail
@@ -139,11 +139,11 @@ player1 = Minion(
 
 player2_name = str(input("Input your characters name Player 2: "))
 player2_armour = str(input("What armour type do you want. Leather (L), Plate (P), Chainmail (C): "))
-if player2_armour.max() == "C":
+if player2_armour == "C":
     player2_armour = chainmail
-elif player2_armour.max() == "L":
+elif player2_armour == "L":
     player2_armour = leather
-elif player2_armour.max() == "P":
+elif player2_armour == "P":
     player2_armour = plate
 else:
     print("invalid armour, defaulting to leather, womp womp")
