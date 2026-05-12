@@ -216,3 +216,10 @@ def choose_attacks(attacks):
             pass
         else:
             return [attack1, attack2, attack3]
+        
+def play(player1, player2, attacks):
+    print("PLAYER 1 STARTS")
+    while True:
+        player1_attacks = choose_attacks(attacks)
+        print(f"Your attack options are: \n 1. {player1_attacks[0]} \n 2. {player1_attacks[1]} \n 3. {player1_attacks[2]}")
+
