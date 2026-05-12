@@ -60,12 +60,12 @@ chainmail = Armour(
     }
 )
 katana_rush = Attack("Katana Rush", "slash", 1.1)
-longsword_sweep = Attack("Longsword Sweep", "slash", 1.2)
-dual_blade_fury = Attack("Dual Blade Fury", "slash", 1.3)
-whirlwind_cut = Attack("Whirlwind Cut", "slash", 1.25)
-rending_arc = Attack("Rending Arc", "slash", 1.4)
-dagger_thrust = Attack("Dagger Thrust", "pierce", 1.0)
-longspear_throw = Attack("Longspear Throw", "pierce", 1.3)
+longsword_sweep = Attack("Longsword Sweep", "slash", 1.2)v
+dual_blade_fury = Attack("Dual Blade Fury", "slash", 1.3)i
+whirlwind_cut = Attack("Whirlwind Cut", "slash", 1.25)h
+rending_arc = Attack("Rending Arc", "slash", 1.4)a
+dagger_thrust = Attack("Dagger Thrust", "pierce", 1.0)a
+longspear_throw = Attack("Longspear Throw", "pierce", 1.3)n
 needle_strike = Attack("Needle Strike","pierce", 0.9)
 assassin_stab = Attack("Assassin Stab", "pierce", 1.35)
 crossbow_puncture = Attack("Crossbow","pierce", 1.2)
