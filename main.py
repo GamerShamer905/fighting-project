@@ -60,7 +60,7 @@ chainmail = Armour(
     }
 )
 katana_rush = Attack("Katana Rush", "slash", 1.1)
-longsword_sweep = Attack("Longsword Sweep", "slash", 1.2)
+longsword_sweep =Attack("Longsword Sweep", "slash", 1.2)
 dual_blade_fury = Attack("Dual Blade Fury", "slash", 1.3)
 whirlwind_cut = Attack("Whirlwind Cut", "slash", 1.25)
 rending_arc = Attack("Rending Arc", "slash", 1.4)
