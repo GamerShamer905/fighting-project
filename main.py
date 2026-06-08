@@ -1,20 +1,27 @@
 from random import randint, sample
 class Minion:
+    #initialises class and assigns attributes
     def __init__(self, name, health, attack_power, armour):
         self.name = name
         self.health = health
         self.attack_power = attack_power
         self.armour = armour
+    #shows the persons who died their name
     def die(self):
             print(f"{self.name} has DIED.")
+    #reduces health
     def take_damage(self, amount):
         self.health = self.health - amount
         if self.health <= 0:
             self.die()
+    #decides how much health is reduced
     def attack(self, target, attack):
         if randint(1, 100) == 1:
             crit_mult = 1.45
             print("CRITICAL HIT!")
+        elif randint(1, 100) and randint(1,100) and randint(1,100) == 1:
+            crit_mult(200)
+            print("INSTANT DEATH HAHAHAHA")
         else:
              crit_mult = 1
         damage_amount = ((self.attack_power * attack.base_damage) * target.armour.defense_table[attack.attack_type])* crit_mult
@@ -245,38 +252,5 @@ def play(player1, player2, attacks):
             break
     winner = check_winner(player1, player2)
     print(f"{winner} Won!")
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
 
 play(player1, player2, attacks)
